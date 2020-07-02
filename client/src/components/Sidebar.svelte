@@ -24,9 +24,10 @@
         position: fixed;
         display: flex;
         flex-direction: column;
-        
+
         width: 50%;
         min-width: 300px;
+        height: 100%;
 
         padding-right:2rem;
     }
