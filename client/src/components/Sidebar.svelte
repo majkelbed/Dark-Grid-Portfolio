@@ -1,3 +1,7 @@
+<script>
+    import SectionIndicator from './SectionIndicator.svelte';
+</script>
+
 <aside class="sidebar">
     <h1 class="sidebar_title">
         Hello, I'm <br>
@@ -13,6 +17,8 @@
         laudantium inventore eaque suscipit similique sequi fugiat.
     </p>
 
+    <SectionIndicator></SectionIndicator>
+
     <div class="sidebar_social-media">
         <a class="link" href="">Twitter</a>
         <a class="link" href="">Github</a>
@@ -25,7 +31,8 @@
         display: flex;
         flex-direction: column;
 
-        width: 50%;
+        z-index: 0;
+        width: calc(50% - 3rem);
         min-width: 300px;
         height: 100%;
 
