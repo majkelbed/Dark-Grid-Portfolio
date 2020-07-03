@@ -20,8 +20,21 @@
 		height: 100%;
 
 		padding: 3rem;
-
-		background:#151515;
+		
 		color:white;
 	}
+
+	@media screen and (max-width: 900px) {
+		.page-container {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media screen and (min-width: 1400px) {
+		.page-container {
+			max-width: 1360px;
+			margin: 0 auto;
+		}
+	}
+	
 </style>

@@ -34,6 +34,7 @@
         z-index: 0;
         width: calc(50% - 3rem);
         min-width: 300px;
+        max-width: 630px;
         height: 100%;
 
         padding-right:2rem;
@@ -54,5 +55,13 @@
     .sidebar_social-media {
         margin-top:auto;
     }
+
+    @media screen and (max-width: 900px) {
+		.sidebar {
+			position: relative;
+            width: 100%;
+            max-width: 100%;
+		}
+	}
 
 </style>

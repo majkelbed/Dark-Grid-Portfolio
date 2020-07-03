@@ -19,22 +19,23 @@
 
 <main class="feed">
   <section 
-    class="projects"
+    class="projects hover:blur"
     data-section="projects"
     >
     {#each Array.from({ length: 10 }) as item, index}
       <div
-        class="project">
+        class="project hover:scale">
         Lorem ipsum dolor sit amet.
       </div>
     {/each}
   </section>
+
   <section 
-    class="skills"
+    class="skills hover:blur"
     data-section="skills"
     >
     {#each Array.from({ length: 10 }) as item}
-      <div class="skill">Lorem ipsum dolor sit amet.</div>
+      <div class="skill hover:scale">Lorem ipsum dolor sit amet.</div>
     {/each}
   </section>
 </main>
@@ -44,11 +45,19 @@
         grid-column-start: 2;
     }
 
-    .projects:hover .project {
+    .projects {
+        margin-bottom:10rem;
+    }
+
+    .hover\:scale, .hover\:blur {
+        transition: 0.4s transform cubic-bezier(0.175, 0.885, 0.32, 1.275), 0.25s opacity cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .hover\:blur:hover > * {
         opacity:0.3;
     }
 
-    .projects:hover .project:hover {
+    .hover\:blur:hover .hover\:scale:hover {
         opacity: 1;
     }
 
@@ -60,38 +69,18 @@
         padding: 3rem 0.5rem;
         margin-bottom: 0.5rem;
 
-        border: 2px solid white;
         border-radius: 5px;
 
         box-shadow: 5px 5px 21px 9px rgba(0, 0, 0, 0.34);
 
-        background-color: #151515;
-
-        transition: 0.25s transform ease-in-out, 0.25s opacity ease-in-out;
+        background-color: #181818;
     }
 
-    /* .project::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 50;
-        background-color: #151515;
-        opacity: 0;
-        transition: 0.2s opacity ease-in-out;
-    } */
-
-    .project:hover,
-    .project.active {
+    .hover\:scale:hover,
+    .hover\:scale.active {
         z-index: 100;
         transform: scale(1.2);
     }
-
-    /* .project.dimmed::after {
-        opacity: 0.4;
-    } */
 
     .skills {
         display: grid;
@@ -102,13 +91,23 @@
     }
 
     .skill {
-        border: 2px solid white;
-        border-radius: 5px;
         grid-row: span 4;
+        
+        border-radius: 5px;
+
+        box-shadow: 5px 5px 21px 9px rgba(0, 0, 0, 0.34);
+
+        background-color: #181818;
     }
 
     .skill:nth-child(2) {
         grid-row: 2 / span 4;
         grid-column-start: 2;
+    }
+
+    @media screen and (max-width: 900px) {
+        .feed {
+            grid-column-start: auto;
+        } 
     }
 </style>
