@@ -1,7 +1,7 @@
 <script>
     import { INTERSECTED_SECTION } from '../stores/HomePage.js';
 
-    const sections = ['projects', 'skills'];
+    const sections = ['projects', 'skills', 'contact'];
     let activeSection = 'projects';
 
     INTERSECTED_SECTION.subscribe(section => activeSection = section);
@@ -24,7 +24,7 @@
 
     .section.active {
         font-weight: bold;
-        transform: scale(1.1);
+        transform: scale(1.3);
     }
 
     .line-separator {

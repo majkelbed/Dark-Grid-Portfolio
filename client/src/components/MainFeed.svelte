@@ -1,10 +1,16 @@
 <script>
+    import ContactForm from './ContactForm.svelte';
     import { onMount } from "svelte";
     import { INTERSECTED_SECTION } from '../stores/HomePage.js';
 
     onMount(() => {
-        const options = { }
-        const handler = ([{isIntersecting, target}]) => {
+        const sections = ['projects', 'skills', 'contact'];
+
+        const options = {
+            threshold: 0.5
+        }
+        const handler = ([e]) => {
+            const { isIntersecting, target } = e;
             if(isIntersecting) {
                 const { section } = target.dataset;
                 INTERSECTED_SECTION.set(section);
@@ -14,6 +20,7 @@
 
         observer.observe(document.querySelector('.skills'));   
         observer.observe(document.querySelector('.projects'));   
+        observer.observe(document.querySelector('.contact'));   
     })
 </script>
 
@@ -22,10 +29,12 @@
     class="projects hover:blur"
     data-section="projects"
     >
-    {#each Array.from({ length: 10 }) as item, index}
+    {#each Array.from({ length: 4 }) as item, index}
       <div
         class="project hover:scale">
-        Lorem ipsum dolor sit amet.
+        <small class="project_lang">Javascript</small>
+        <h3 class="project_title">jelly-beans.js</h3>
+        <p class="project_subtitle">Make your js looks sweet</p>
       </div>
     {/each}
   </section>
@@ -34,10 +43,16 @@
     class="skills hover:blur"
     data-section="skills"
     >
-    {#each Array.from({ length: 10 }) as item}
-      <div class="skill hover:scale">Lorem ipsum dolor sit amet.</div>
+    {#each Array.from({ length: 5 }) as item}
+      <div class="skill hover:scale">
+        <small class="skill_tech">Vue.js</small>
+        <h2 class="skill_desc">Lorem ipsum dolor, sit amet.</h2>
+      </div>
     {/each}
   </section>
+  <span class="contact" data-section="contact">
+    <ContactForm></ContactForm>
+  </span>
 </main>
 
 <style>
@@ -66,7 +81,7 @@
 
         z-index: 3;
 
-        padding: 3rem 0.5rem;
+        padding: 2rem;
         margin-bottom: 0.5rem;
 
         border-radius: 5px;
@@ -74,6 +89,22 @@
         box-shadow: 5px 5px 21px 9px rgba(0, 0, 0, 0.34);
 
         background-color: #181818;
+    }
+
+    .project_lang {
+        display: block;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-size: 0.6rem;
+    }
+
+    .project_title {
+        font-size: 2rem;
+    }
+
+    .project_subtitle {
+        font-size:0.75rem;
+        opacity: 0.6;
     }
 
     .hover\:scale:hover,
@@ -88,10 +119,18 @@
         grid-auto-rows: 65px;
         grid-auto-flow: row;
         gap: 0.5rem;
+
+        margin-bottom:10rem;
     }
 
     .skill {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         grid-row: span 4;
+
+        padding: 1rem;
         
         border-radius: 5px;
 
